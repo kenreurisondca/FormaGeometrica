@@ -1,17 +1,26 @@
 #include "Node.cpp"
 #include "Lista.cpp"
+#include "ListaDEncadeado.cpp"
 #include<iostream>
 using namespace std;
 int main(){
-	Node *a = new Node(5);
-	Node *b = new Node(7);
-	Node *c = new Node(2);
-	a->setProx(b);
-	b->setProx(c);
-	Node *n = a;
-	while(n != 0){
-		cout << n->getInfo();
-		n = n->getProx();
-	}
-	Lista *l = new Lista(a);
+	/*
+	Lista *l = new Lista(1);
+	l->addInfo(2);
+	l->addInfo(3);
+	l->addInfo(4);
+	l->addInfo(5);
+	l->showLista();
+	//l->remove(1);
+	l->showLista();
+	Node *n = l->busca(5);
+	Lista *l2 = new Lista(n);
+	l2 -> showLista();
+	*/
+	ListaDEncadeado * l = new ListaDEncadeado(1);
+	l -> addInfo(2);
+	l -> addInfo(3);
+	l -> addInfo(5);
+	l -> addInfo(6);
+	l -> showLista();
 }

@@ -1,11 +1,12 @@
 #ifndef NODE_CPP
 #define NODE_CPP
 class Node {
-	private:
+	protected:
 		int info;
 		Node* prox;
 	public:
 		Node();
+		~Node();
 		Node(int);
 		Node(Node*);
 		Node* getProx();
@@ -17,6 +18,11 @@ Node::Node(int value){
 	info = value;
 	prox = 0;
 }
+Node::~Node(){
+	prox = 0;
+	info = 0;
+}
+
 int Node::getInfo(){
 	return info;
 }
