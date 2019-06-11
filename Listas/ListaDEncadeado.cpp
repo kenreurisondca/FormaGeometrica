@@ -16,8 +16,13 @@ class ListaDEncadeado {
 		void remove(int);
 		NodeDuplo* busca(int);
 		void showLista();
+		void showPreordem();
+		NodeDuplo* getHead();
 };
 
+NodeDuplo* ListaDEncadeado::getHead(){
+	return head;
+}
 ListaDEncadeado::ListaDEncadeado(NodeDuplo* n){
 	head = n;
 }
@@ -29,21 +34,37 @@ ListaDEncadeado::ListaDEncadeado(int value){
 }
 
 void ListaDEncadeado::addInfo(int value){
-	if(head == 0) {
-		head = new NodeDuplo(value);
+	if(this -> head == 0) {
+		this -> head = new NodeDuplo(value);
+		
 	}else{
 		if(value > head -> getInfo()) {
-			ListaDEncadeado *l 
+			ListaDEncadeado *le 
 				= new ListaDEncadeado(head -> getProx());
-			l -> addInfo(value); 
+			le -> addInfo(value); 
+			cout << value << " ";
 		}else if(value < head -> getInfo()){
-			ListaDEncadeado *l 
+			ListaDEncadeado *lr
 				= new ListaDEncadeado(head -> getAnt());
-			l -> addInfo(value); 
+			lr -> addInfo(value); 
+			cout << value << " ";
 		}
 	}
 }
 
+void ListaDEncadeado::showPreordem() {
+	cout << head -> getInfo();
+	if(head->getAnt() != 0) {	
+		ListaDEncadeado *esq 
+			=  new ListaDEncadeado(head->getAnt());
+		esq -> showPreordem();
+	}
+	if(head->getProx() != 0) {
+		ListaDEncadeado *dir 
+			=  new ListaDEncadeado(head->getProx());
+		dir -> showPreordem();
+	}
+}
 void ListaDEncadeado::showLista(){
 	NodeDuplo * n = new NodeDuplo();
 	cout << n -> getInfo();
