@@ -14,24 +14,33 @@ class ListaDEncadeado {
 		ListaDEncadeado(int);
 		void addInfo(int);
 		void remove(int);
-		Node* busca(int);
+		NodeDuplo* busca(int);
 		void showLista();
 };
 
+ListaDEncadeado::ListaDEncadeado(NodeDuplo* n){
+	head = n;
+}
+
 ListaDEncadeado::ListaDEncadeado(int value){
-	head->setAnt(0);
-	head->setProx(0);
+	head->setAnt(new NodeDuplo());
+	head->setProx(new NodeDuplo());
 	head -> setInfo(value);
 }
+
 void ListaDEncadeado::addInfo(int value){
-	if(head == 0){
-		head->setInfo(value);
+	if(head == 0) {
+		head = new NodeDuplo(value);
 	}else{
-		NodeDuplo* n = head -> getProx();
-		while( n -> getProx() != 0){
-			n = n -> getProx();
+		if(value > head -> getInfo()) {
+			ListaDEncadeado *l 
+				= new ListaDEncadeado(head -> getProx());
+			l -> addInfo(value); 
+		}else if(value < head -> getInfo()){
+			ListaDEncadeado *l 
+				= new ListaDEncadeado(head -> getAnt());
+			l -> addInfo(value); 
 		}
-		n = new NodeDuplo(value);
 	}
 }
 

@@ -7,7 +7,10 @@ class NodeDuplo {
 		NodeDuplo *prox;
 		int info;
 	public:
-		NodeDuplo(){}
+		NodeDuplo(){
+			ant = 0;
+			prox = 0;
+		}
 		NodeDuplo(int);
 		void setInfo(int v){
 			info = v;

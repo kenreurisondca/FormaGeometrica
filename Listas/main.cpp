@@ -1,26 +1,15 @@
-#include "Node.cpp"
-#include "Lista.cpp"
+#include "NodeDuplo.cpp"
 #include "ListaDEncadeado.cpp"
 #include<iostream>
 using namespace std;
 int main(){
-	/*
-	Lista *l = new Lista(1);
-	l->addInfo(2);
-	l->addInfo(3);
-	l->addInfo(4);
-	l->addInfo(5);
-	l->showLista();
-	//l->remove(1);
-	l->showLista();
-	Node *n = l->busca(5);
-	Lista *l2 = new Lista(n);
-	l2 -> showLista();
-	*/
-	ListaDEncadeado * l = new ListaDEncadeado(1);
-	l -> addInfo(2);
-	l -> addInfo(3);
-	l -> addInfo(5);
-	l -> addInfo(6);
-	l -> showLista();
+	
+	ListaDEncadeado * l = 
+		new ListaDEncadeado(new NodeDuplo(1));
+	l -> addInfo(12);	
+	l -> addInfo(20);
+	l -> addInfo(21);
+	l -> addInfo(8);
+	l -> addInfo(7);
+	l -> showInfo();
 }
